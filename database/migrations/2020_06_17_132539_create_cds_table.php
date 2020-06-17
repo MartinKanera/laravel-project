@@ -19,8 +19,9 @@ class CreateCdsTable extends Migration
             $table->string('name');
             $table->string('artist');
             $table->tinyInteger('release_year');
-            $table->string('cover');
-            $table->foreign('genre')->references('id')->on('genres');
+            $table->string('cover')->nullable();
+            $table->unsignedBigInteger('genre_id');
+            $table->foreign('genre_id')->references('id')->on('genres');
         });
     }
 

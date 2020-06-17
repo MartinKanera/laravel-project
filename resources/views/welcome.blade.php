@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>CD CRUD</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -15,6 +15,9 @@
     <body>
       <div id="app" class="d-flex align-items-center justify-content-center">
         <example-component></example-component>
+        <?php
+          dd($result);
+        ?>
       </div>
     </body>
 </html>
