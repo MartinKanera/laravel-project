@@ -9,6 +9,13 @@ class CD extends Model
   protected $table = 'cds';
 
   public function genre () {
-    return $this->belongsTo('App\Genre', 'genre_id')->get();
+    return $this->belongsTo('App\Genre', 'genre_id', 'genre_id')->get();
   }
+
+  private static $whiteListFilter = [
+    'name',
+    'artist',
+    'genre',
+    'release_year',
+  ];
 }

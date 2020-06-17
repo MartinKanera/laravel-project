@@ -14,5 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'CDsController@index');
+Route::get('/cds/{cd}', 'CDsController@show');
 
 
