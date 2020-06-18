@@ -21,7 +21,7 @@ class CreateCdsTable extends Migration
             $table->tinyInteger('release_year');
             $table->string('cover')->nullable();
             $table->unsignedBigInteger('genre_id');
-            $table->foreign('genre_id')->references('genre_id')->on('genres');
+            $table->foreign('genre_id')->references('genre_id')->on('genres')->onDelete('cascade');
         });
     }
 

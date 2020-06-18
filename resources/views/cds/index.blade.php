@@ -14,7 +14,7 @@
     <body>
       <div id="app" class="d-flex flex-column" style="">
         <div style="width: 100%; padding: 20px" class="d-flex justify-content-between">
-          <a href="">
+          <a href="/genres">
             <button type="button" class="btn btn-link">Genres CRUD</button>
           </a>
           <a href="/cds/create">

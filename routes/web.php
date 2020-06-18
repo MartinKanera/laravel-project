@@ -20,5 +20,14 @@ Route::get('/cds/create', 'CDsController@create');
 Route::get('/cds/{cd}', 'CDsController@show');
 Route::delete('/cds/{cd}', 'CDsController@destroy')->name('cds.destroy');
 Route::get('/cds/create', 'CDsController@create');
-Route::get('cds/{cd}/edit', 'CDsController@edit');
+Route::get('/cds/{cd}/edit', 'CDsController@edit');
+
+// Route::patch('/genres/{cd}', 'GenresController@update')->name('cds.update');
+// Route::post('/genres', 'GenresController@store');
+Route::get('/genres', 'GenresController@index');
+// Route::get('/genres/create', 'GenresController@create');
+// Route::get('/genres/{cd}', 'GenresController@show');
+Route::delete('/genres/{cd}', 'GenresController@destroy')->name('genre.destroy');
+// Route::get('/genres/create', 'GenresController@create');
+// Route::get('/genres/{cd}/edit', 'GenresController@edit');
 
