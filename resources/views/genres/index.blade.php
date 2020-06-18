@@ -17,7 +17,7 @@
     <a href="/">
       <button type="button" class="btn btn-link">CDs CRUD</button>
     </a>
-    <a href="/cds/create">
+    <a href="/genres/create">
       <button type="button" class="btn btn-dark">Add genre</button>
     </a>
   </div>
@@ -26,10 +26,10 @@
     <tr>
       <th>
         Name
-        <a href="/?scope=name&order=asc">
+        <a href="/genres/?order=asc">
           <button type="button" class="btn btn-link">ASC</button>
         </a>
-        <a href="/?scope=name&order=desc">
+        <a href="/genres/?order=desc">
           <button type="button" class="btn btn-link">DESC</button>
         </a>
       </th>
@@ -41,12 +41,17 @@
       <tr>
         <td>{{ $genre->genre_name }}</td>
         <td class="d-flex">
-          <form action="genres/{{ $genre->genre_id }}" method="POST">
+          <form action="{{ route('genres.destroy', $genre->genre_id) }}" method="POST" style="margin-right: 10px">
             @method('DELETE')
             {{ csrf_field() }}
             <button type="submit" class="btn btn-danger">DELETE</button>
           </form>
-          <!-- -->
+          <a href="/genres/{{ $genre->genre_id }}/edit" style="margin-right: 10px">
+            <button type="button" class="btn btn-dark">EDIT</button>
+          </a>
+          <a href="/genres/{{ $genre->genre_id }}">
+            <button type="button" class="btn btn-dark">INFO</button>
+          </a>
         </td>
       </tr>
     @endforeach

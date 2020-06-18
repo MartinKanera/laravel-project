@@ -11,8 +11,8 @@ use Intervention\Image\Facades\Image;
 class CDsController extends Controller
 {
     public function index(Request $request) {
-        $scope = '';
-        $order = '';
+      $scope = '';
+      $order = '';
 
       if($request->get('scope') !== null) {
         $scope = filter_var($request->get('scope'), FILTER_CALLBACK, array('options' => function ($checkedScope) {
@@ -20,7 +20,6 @@ class CDsController extends Controller
           return in_array($checkedScope, $validScopes);
         }));
       }
-
 
       if($request->get('order') !== null) {
         $order = filter_var($request->get('order'), FILTER_CALLBACK, array('options' => function ($checkedOrder) {
@@ -81,7 +80,7 @@ class CDsController extends Controller
       if(isset($data['cover'])) {
         $imagePath = $data['cover']->store('uploads', 'public');
 
-        $image = Image::make(public_path('storage/' . $imagePath))->fit(256, 256);
+        $image = Image::make(public_path('storage/' . $imagePath))->fit(1200, 1200);
         $image->save();
 
         $data['cover'] = $imagePath;

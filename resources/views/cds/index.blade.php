@@ -72,15 +72,15 @@
                 <td>{{ $cd->release_year }}</td>
                 <td>{{ $cd->genre_name }}</td>
                 <td class="d-flex">
-                  <form action="{{ route('cds.destroy', $cd->id) }}" method="POST">
+                  <form action="{{ route('cds.destroy', $cd->id) }}" method="POST" style="margin-right: 10px">
                     {{ method_field('DELETE') }}
                     {{ csrf_field() }}
                     <button type="submit" class="btn btn-danger">DELETE</button>
                   </form>
-                  <a href="/cds/{{ $cd->id }}/edit">
+                  <a href="/cds/{{ $cd->id }}/edit" style="margin-right: 10px">
                     <button type="button" class="btn btn-dark">EDIT</button>
                   </a>
-                  <a href="/cds/{{ $cd->id }}">
+                  <a href="/cds/{{ $cd->id }}" style="margin-right: 10px">
                     <button type="button" class="btn btn-dark">INFO</button>
                   </a>
                 </td>

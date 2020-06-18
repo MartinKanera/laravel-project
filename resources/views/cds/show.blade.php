@@ -14,7 +14,6 @@
 <body>
 <div id="app" class="d-flex flex-column justify-content-center align-items-center">
   <div class="d-flex flex-column bg-dark text-white" style="padding: 20px">
-    <!-- TODO add storage in src -->
     <img src="/storage/{{ $newCd['cover'] }}" height="256" width="256" />
     <span style="margin-top: 20px">{{ $newCd['name'] }}</span>
     <span>{{ $newCd['artist'] }}</span>

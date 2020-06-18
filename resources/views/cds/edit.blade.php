@@ -55,7 +55,7 @@
           <label for="genre" class="col-form-label">Genre</label>
           <select id="genre" name="genre_id">
             @foreach($genres as $genre)
-              <option @if($genre->genre_id === $cd->genre_id) selected @endif value="{{ $genre->genre_id }}">{{ $genre->genre_name }}</option>
+              <option @if($genre->genre_id == $cd->genre_id) selected @endif value="{{ $genre->genre_id }}">{{ $genre->genre_name }}</option>
             @endforeach
           </select>
         </div>
