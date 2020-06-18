@@ -6,6 +6,7 @@ use App\CD;
 use App\Genre;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Intervention\Image\Facades\Image;
 
 class CDsController extends Controller
 {
@@ -52,5 +53,75 @@ class CDsController extends Controller
       $newCd = array_merge($cdAttributes, $genreAttributes);
 
       return view('cds.show', compact('newCd'));
+    }
+
+    public function destroy (CD $cd) {
+      try {
+        $cd->delete();
+      } catch(ErrorException $exception) {};
+
+      return redirect('/');
+    }
+
+    public function create () {
+      $genres = Genre::all();
+
+      return view('cds.create', compact('genres'));
+    }
+
+    public function store (Request $request) {
+      $data = $request->validate([
+        'name' => 'required|string|min:2|max:32',
+        'artist' => 'required|string|min:2|max:32',
+        'cover' => 'image',
+        'genre_id' => 'required|integer|min:1',
+        'release_year' => 'required|integer|min:1900'
+      ]);
+
+      if(isset($data['cover'])) {
+        $imagePath = $data['cover']->store('uploads', 'public');
+
+        $image = Image::make(public_path('storage/' . $imagePath))->fit(256, 256);
+        $image->save();
+
+        $data['cover'] = $imagePath;
+      }
+
+      $cd = new CD;
+
+      $cd->fill($data);
+      $cd->save();
+
+      return redirect('/');
+    }
+
+    public function edit (CD $cd) {
+      $genres = Genre::all();
+
+      return view('cds.edit', compact('cd', 'genres'));
+    }
+
+    public function update (CD $cd, Request $request) {
+      $data = $request->validate([
+        'name' => 'required|string|min:2|max:32',
+        'artist' => 'required|string|min:2|max:32',
+        'cover' => 'image',
+        'genre_id' => 'required|integer|min:1',
+        'release_year' => 'required|integer|min:1900'
+      ]);
+
+      if(isset($data['cover'])) {
+        $imagePath = $data['cover']->store('uploads', 'public');
+
+        $image = Image::make(public_path('storage/' . $imagePath))->fit(256, 256);
+        $image->save();
+
+        $data['cover'] = $imagePath;
+      }
+
+      $cd->update($data);
+      $cd->save();
+
+      return redirect('/');
     }
 }

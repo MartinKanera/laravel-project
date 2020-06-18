@@ -12,10 +12,11 @@ class CD extends Model
     return $this->belongsTo('App\Genre', 'genre_id', 'genre_id')->get();
   }
 
-  private static $whiteListFilter = [
+  protected $fillable = [
     'name',
     'artist',
-    'genre',
+    'cover',
+    'genre_id',
     'release_year',
   ];
 }

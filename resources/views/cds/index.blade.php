@@ -17,7 +17,7 @@
           <a href="">
             <button type="button" class="btn btn-link">Genres CRUD</button>
           </a>
-          <a href="">
+          <a href="/cds/create">
             <button type="button" class="btn btn-dark">Add song</button>
           </a>
         </div>
@@ -71,11 +71,13 @@
                 <td>{{ $cd->artist }}</td>
                 <td>{{ $cd->release_year }}</td>
                 <td>{{ $cd->genre_name }}</td>
-                <td>
-                  <a href="">
-                    <button type="button" class="btn btn-danger">DELETE</button>
-                  </a>
-                  <a href="">
+                <td class="d-flex">
+                  <form action="{{ route('cds.destroy', $cd->id) }}" method="POST">
+                    {{ method_field('DELETE') }}
+                    {{ csrf_field() }}
+                    <button type="submit" class="btn btn-danger">DELETE</button>
+                  </form>
+                  <a href="/cds/{{ $cd->id }}/edit">
                     <button type="button" class="btn btn-dark">EDIT</button>
                   </a>
                   <a href="/cds/{{ $cd->id }}">
@@ -90,8 +92,6 @@
       </div>
     </body>
 </html>
-
-<script type="text/javascript" src="js/app.js"></script>
 
 <style>
   html, body {

@@ -15,7 +15,7 @@
 <div id="app" class="d-flex flex-column justify-content-center align-items-center">
   <div class="d-flex flex-column bg-dark text-white" style="padding: 20px">
     <!-- TODO add storage in src -->
-    <img src="{{ $newCd['cover'] }}" height="256" width="256" />
+    <img src="/storage/{{ $newCd['cover'] }}" height="256" width="256" />
     <span style="margin-top: 20px">{{ $newCd['name'] }}</span>
     <span>{{ $newCd['artist'] }}</span>
     <span>{{ $newCd['release_year'] }}</span>
@@ -24,8 +24,6 @@
 </div>
 </body>
 </html>
-
-<script type="text/javascript" src="js/app.js"></script>
 
 <style>
   html, body {

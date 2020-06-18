@@ -13,7 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::patch('/cds/{cd}', 'CDsController@update')->name('cds.update');
+Route::post('/cds', 'CDsController@store');
 Route::get('/', 'CDsController@index');
+Route::get('/cds/create', 'CDsController@create');
 Route::get('/cds/{cd}', 'CDsController@show');
-
+Route::delete('/cds/{cd}', 'CDsController@destroy')->name('cds.destroy');
+Route::get('/cds/create', 'CDsController@create');
+Route::get('cds/{cd}/edit', 'CDsController@edit');
 
