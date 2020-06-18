@@ -18,7 +18,7 @@
       <button type="button" class="btn btn-link">CDs CRUD</button>
     </a>
     <a href="/cds/create">
-      <button type="button" class="btn btn-dark">Add song</button>
+      <button type="button" class="btn btn-dark">Add genre</button>
     </a>
   </div>
   <table class="table">
@@ -41,8 +41,8 @@
       <tr>
         <td>{{ $genre->genre_name }}</td>
         <td class="d-flex">
-          <form action="{{ route('genre.destroy', $genre->genre_id) }}" method="POST">
-            {{ method_field('DELETE') }}
+          <form action="genres/{{ $genre->genre_id }}" method="POST">
+            @method('DELETE')
             {{ csrf_field() }}
             <button type="submit" class="btn btn-danger">DELETE</button>
           </form>

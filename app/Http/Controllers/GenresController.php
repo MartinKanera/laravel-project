@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\CD;
 use App\Genre;
+use App\CD;
 use Illuminate\Support\Facades\DB;
 
 class GenresController extends Controller
@@ -15,10 +15,8 @@ class GenresController extends Controller
       return view('genres.index', compact('genres'));
     }
 
-    public function destroy (Genre $genre) {
-
-      dd($genre->getAttribute('genre_id'));
-      DB::table('genres')->where('genre_id', '=', $genre->getAttributes()['genre_id']);
+    public function destroy ($genre_id) {
+      DB::table('genres')->where('genre_id', '=', $genre_id)->delete();
 
       return redirect('/genres');
     }
